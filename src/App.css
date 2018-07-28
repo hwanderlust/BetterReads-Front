@@ -2,9 +2,14 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.container {
+  display: grid;
+  margin: 10px;
+  grid-template-columns: 10% auto 10%;
+}
+
+.home main {
+  padding: 5%;
 }
 
 .App-header {
@@ -15,7 +20,7 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 4em;
 }
 
 .App-intro {
@@ -25,4 +30,267 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+nav {
+  margin: 0;
+}
+
+.active-menu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 80vh;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: pink;
+}
+
+.menu-item {
+  flex: 1;
+  margin: 10%;
+  text-align: center;
+}
+
+.inactive-menu {
+  min-height: 80vh;
+  background-color: purple;
+  width: 20%;
+  margin: 10%;
+}
+
+.search-bar {
+  width: 50em;
+  height: 2.5em;
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+.books-section {
+  background-color: grey;
+  min-height: 30em;
+  overflow: scroll;
+}
+
+.books-section .book-1 {
+  text-align: center;
+  background: brown;
+  width: 10em;
+  height: 10em;
+  position: absolute;
+  top: 38%;
+  left: 23%;
+}
+
+.books-section .book-2 {
+  text-align: center;
+  background: brown;
+  width: 14em;
+  height: 14em;
+  position: absolute;
+  top: 56%;
+  left: 32%;
+}
+
+.book-3 {
+  text-align: center;
+  background: brown;
+  min-width: 7em;
+  min-height: 7em;
+  position: absolute;
+  top: 41%;
+  left: 37%;
+}
+
+.book-4 {
+  text-align: center;
+  background: brown;
+  width: 12em;
+  height: 12em;
+  position: absolute;
+  top: 37%;
+  left: 50%;
+}
+
+.book-5 {
+  text-align: center;
+  background: brown;
+  width: 8em;
+  height: 8em;
+  position: absolute;
+  top: 60%;
+  left: 55%;
+}
+
+.book-6 {
+  text-align: center;
+  background: brown;
+  width: 11em;
+  height: 11em;
+  position: absolute;
+  top: 50%;
+  left: 65%;
+}
+
+.shelf-book-cover-top-left {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  height: 30%;
+  width: 15%;
+  background-color: black;
+}
+
+.shelf-top-left {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  width: 0;
+	height: 0;
+	border-bottom: 15em solid red;
+	border-right: 10em solid transparent;
+}
+
+.shelf-book-cover-top-right {
+  position: absolute;
+  top: 20%;
+  left: 60%;
+  height: 30%;
+  width: 15%;
+  background-color: black;
+}
+
+.shelf-top-right {
+  position: absolute;
+  top: 25%;
+  left: 80%;
+  width: 0;
+	height: 0;
+	border-bottom: 15em solid red;
+	border-right: 10em solid transparent;
+}
+
+.shelf-book-cover-bottom-left {
+  position: absolute;
+  top: 60%;
+  left: 20%;
+  height: 30%;
+  width: 15%;
+  background-color: black;
+}
+
+.shelf-bottom-left {
+  position: absolute;
+  top: 60%;
+  left: 40%;
+  width: 0;
+	height: 0;
+	border-bottom: 15em solid red;
+	border-right: 10em solid transparent;
+
+}
+
+.shelf-book-cover-bottom-right {
+  position: absolute;
+  top: 60%;
+  left: 60%;
+  height: 30%;
+  width: 15%;
+  background-color: black;
+}
+
+.shelf-bottom-right {
+  position: absolute;
+  top: 60%;
+  left: 80%;
+  width: 0;
+	height: 0;
+	border-bottom: 15em solid red;
+	border-right: 10em solid transparent;
+}
+
+.book-cover-title h1 {
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 4em;
+}
+
+.shelf {
+  display: grid;
+  margin: 10px;
+  grid-template-columns: 30% auto;
+}
+
+.spines {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.shelf .books-list {
+  height: 70vh;
+  overflow: scroll;
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid black;
+}
+
+.spine {
+  border: 1px black solid;
+  flex: 1;
+  max-height: 5vh;
+  border-radius: 10px;
+  margin: 1px;
+  box-shadow: -5px -5px #888888;
+}
+
+.books-list .book {
+  min-height: 500px;
+  width: 400px;
+  border: 1px solid black;
+  margin: 10%;
+  flex: 1;
+  align-self: center;
+  box-shadow: 5px 5px #888888;
+}
+
+.form-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  max-width: 600px;
+}
+
+.form {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.form-labels {
+  font-size: 18px;
+}
+
+.form-inputs {
+  width: 50em;
+  height: 2.5em;
 }
