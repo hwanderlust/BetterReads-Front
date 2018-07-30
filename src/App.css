@@ -81,47 +81,57 @@ nav {
 
 .books-section .book-1 {
   text-align: center;
-  width: 10em;
-  height: 10em;
+  width: 150px;
+  height: 200px;
   position: absolute;
   top: 38%;
   left: 23%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .books-section .book-2 {
   text-align: center;
-  width: 14em;
-  height: 14em;
+  width: 200px;
+  height: 350px;
   position: absolute;
   top: 56%;
   left: 32%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .book-3 {
   text-align: center;
-  min-width: 7em;
-  min-height: 7em;
+  width: 150px;
+  height: 250px;
   position: absolute;
   top: 41%;
   left: 37%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .book-4 {
   text-align: center;
-  width: 12em;
-  height: 12em;
+  width: 150px;
+  height: 250px;
   position: absolute;
   top: 37%;
   left: 50%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .book-5 {
   text-align: center;
-  width: 8em;
-  height: 8em;
+  width: 150px;
+  height: 250px;
   position: absolute;
   top: 60%;
   left: 55%;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .shelf-book-cover-top-left {

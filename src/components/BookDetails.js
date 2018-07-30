@@ -6,11 +6,7 @@ const BookDetails = ({ book }) => {
     book ?
     <div>
       <h1>{book.title}</h1>
-      <div style={{
-        background: 'url(' + book.image + ')',
-        backgroundSize: 'contain',
-        backgroundRepeat: 'no-repeat'
-      }}></div>
+      <img src={book.image} />
       <h3>{book.author}</h3>
       <p>{book.description}</p>
     </div>
