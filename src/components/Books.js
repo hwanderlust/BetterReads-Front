@@ -1,10 +1,10 @@
 import React from 'react'
 import Book from './Book'
 
-const Books = ({ bestSellers, renderBook }) => {
-  console.log(bestSellers);
+const Books = ({ books, renderBook }) => {
+  console.log(books);
   let bookNum = 0
-  const renderBooks = bestSellers.slice().splice(0,5).map(book => {
+  const renderBooks = books.slice().splice(0,5).map(book => {
     ++bookNum
     return <Book key={book.list_id} bookNo={`book-${bookNum}`} book={book} renderBook={renderBook} />
   })

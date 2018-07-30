@@ -20,14 +20,14 @@ class App extends Component {
 
   state = {
     menuStatus: false,
-    bestSellers: null,
+    books: null,
     currentBook: null,
   }
 
   componentDidMount() {
     getBestSellers().then(books => {
       this.setState({
-        bestSellers: books
+        books: books
       })
     }).then(x => console.log(this.state))
   }
@@ -39,7 +39,11 @@ class App extends Component {
 
   handleSearch = (input) => {
     console.log(input);
-    searchRequest(input).then(data => console.log(data));
+    searchRequest(input).then(data => {
+      this.setState({
+        books: data
+      }, () => console.log(this.state))
+    });
   }
 
   renderBook = (book) => {
@@ -82,7 +86,7 @@ class App extends Component {
                 <main>
                   <Search handleSearch={this.handleSearch} />
                   <br/><br/>
-                  {this.state.bestSellers ? <Books bestSellers={this.state.bestSellers} renderBook={this.renderBook} /> : null}
+                  {this.state.books ? <Books books={this.state.books} renderBook={this.renderBook} /> : null}
                   <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                   </p>
