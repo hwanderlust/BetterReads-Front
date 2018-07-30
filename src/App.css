@@ -27,37 +27,37 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 nav {
   margin: 0;
+  margin-right: 10px;
 }
 
-.active-menu {
+.menu {
   list-style-type: none;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   min-height: 80vh;
-  justify-content: center;
   align-items: flex-start;
   background-color: pink;
+  margin: 0;
+  padding: 0;
 }
 
 .menu-item {
-  flex: 1;
-  margin: 10%;
-  text-align: center;
+  flex: 0;
+  align-self: stretch;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  text-decoration: none;
+  color: black;
 }
 
-.inactive-menu {
-  min-height: 80vh;
-  background-color: purple;
-  width: 20%;
-  margin: 10%;
+.menu-item a {
+}
+
+.menu-item:hover {
+  transform: scale(1.2, 1.2);
 }
 
 .search-bar {
@@ -122,15 +122,6 @@ nav {
   position: absolute;
   top: 60%;
   left: 55%;
-}
-
-.book-6 {
-  text-align: center;
-  width: 11em;
-  height: 11em;
-  position: absolute;
-  top: 50%;
-  left: 65%;
 }
 
 .shelf-book-cover-top-left {
