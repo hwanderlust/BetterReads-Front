@@ -8,9 +8,21 @@ const Book = ({ bookNo, book, renderBook }) => {
     renderBook(book)
   }
 
+  const hover = (e) => {
+    // e.target.style += `width: 15em; height: 15em;`
+    // e.target.ownerDocument.body.style.opacity += `0.5`
+  }
+
+  const stopHover = (e) => {
+    // e.target.style = `transform: scale(1, 1)`
+    // e.target.ownerDocument.body.style.opacity= `1`
+  }
+
   return (
     <div
       onClick={handleClick}
+      onMouseEnter={(e) => hover(e)}
+      onMouseLeave={(e) => stopHover(e)}
       className={bookNo}
       style={{
         background: 'url(' + book.books[0].book_image + ')',
@@ -18,7 +30,7 @@ const Book = ({ bookNo, book, renderBook }) => {
         backgroundRepeat: 'no-repeat'
       }}
     >
-      
+
     </div>
   );
 }
