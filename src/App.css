@@ -81,7 +81,6 @@ nav {
 
 .books-section .book-1 {
   text-align: center;
-  background: brown;
   width: 10em;
   height: 10em;
   position: absolute;
@@ -91,7 +90,6 @@ nav {
 
 .books-section .book-2 {
   text-align: center;
-  background: brown;
   width: 14em;
   height: 14em;
   position: absolute;
@@ -101,7 +99,6 @@ nav {
 
 .book-3 {
   text-align: center;
-  background: brown;
   min-width: 7em;
   min-height: 7em;
   position: absolute;
@@ -111,7 +108,6 @@ nav {
 
 .book-4 {
   text-align: center;
-  background: brown;
   width: 12em;
   height: 12em;
   position: absolute;
@@ -121,7 +117,6 @@ nav {
 
 .book-5 {
   text-align: center;
-  background: brown;
   width: 8em;
   height: 8em;
   position: absolute;
@@ -131,7 +126,6 @@ nav {
 
 .book-6 {
   text-align: center;
-  background: brown;
   width: 11em;
   height: 11em;
   position: absolute;

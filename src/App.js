@@ -14,11 +14,22 @@ import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
 
 import Carousel from './components/Carousel'
+import BookDetails from './components/BookDetails'
 
 class App extends Component {
 
   state = {
     menuStatus: false,
+    bestSellers: null,
+    currentBook: null,
+  }
+
+  componentDidMount() {
+    getBestSellers().then(books => {
+      this.setState({
+        bestSellers: books.results.lists
+      })
+    }).then(x => console.log(this.state))
   }
 
   handleMenu = () => {
@@ -31,8 +42,14 @@ class App extends Component {
     searchRequest(input).then(data => console.log(data));
   }
 
+  renderBook = (book) => {
+    console.log('app renderBook');
+    this.setState({
+      currentBook: book
+    }, () => console.log(this.state))
+  }
+
   render() {
-    getBestSellers()
     return (
       <div className="App container">
         <nav>
@@ -48,20 +65,24 @@ class App extends Component {
           }} />
           <Route path='/login' component={Login} />
           <Route path='/shelves' render={props => {
-            <Shelves createShelf={createShelf} />
+            return <Shelves createShelf={createShelf} />
           }} />
           <Route path='/shelf' component={Shelf} />
           <Route path='/carousel' component={Carousel} />
+          <Route path='/book' render={props => {
+            return <BookDetails book={this.state.currentBook} />
+          }} />
           <Route path='/home' render={props => {
             return (
               <div className='home'>
+                {this.state.currentBook ? <Redirect to='/book' /> : null}
                 <header className="App-header">
                   <h1 className="App-title">BetterReads</h1>
                 </header>
                 <main>
                   <Search handleSearch={this.handleSearch} />
                   <br/><br/>
-                  <Books />
+                  {this.state.bestSellers ? <Books bestSellers={this.state.bestSellers} renderBook={this.renderBook} /> : null}
                   <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                   </p>
