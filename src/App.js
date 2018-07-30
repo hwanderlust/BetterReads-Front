@@ -13,6 +13,8 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
 
+import Carousel from './components/Carousel'
+
 class App extends Component {
 
   state = {
@@ -40,6 +42,7 @@ class App extends Component {
           <Route path='/login' component={Login} />
           <Route path='/shelves' component={Shelves} />
           <Route path='/shelf' component={Shelf} />
+          <Route path='/carousel' component={Carousel} />
           <Route path='/home' render={props => {
             return (
               <div className='home'>

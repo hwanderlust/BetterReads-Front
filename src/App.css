@@ -294,3 +294,18 @@ nav {
   width: 50em;
   height: 2.5em;
 }
+
+.carousel_slide {
+  height: 100%;
+  right: 0;
+  position: absolute;
+  display: none;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+}
+
+.carousel_activator:nth-of-type(1):checked ~ .carousel_slide:nth-of-type(1) {
+  display: block;
+  animation: showSlide 0.5s;
+}
