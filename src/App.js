@@ -7,7 +7,7 @@ import Shelves from './components/Shelves'
 import Shelf from './components/Shelf'
 import Books from './components/Books'
 import Search from './components/Search'
-import { getBestSellers } from './adapter'
+import { getBestSellers, searchRequest, createUser } from './adapter'
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import SignUp from './components/auth/SignUp'
@@ -26,6 +26,11 @@ class App extends Component {
     this.setState({menuStatus: !this.state.menuStatus}, () => console.log(this.state))
   }
 
+  handleSearch = (input) => {
+    console.log(input);
+    searchRequest(input).then(data => console.log(data));
+  }
+
   render() {
     getBestSellers()
     return (
@@ -38,7 +43,9 @@ class App extends Component {
           <Route exact path='/' render={props => {
             return <Redirect to='/home' />
           }} />
-          <Route path='/signup' component={SignUp} />
+          <Route path='/signup' render={props => {
+            return <SignUp createUser={createUser}/>
+          }} />
           <Route path='/login' component={Login} />
           <Route path='/shelves' component={Shelves} />
           <Route path='/shelf' component={Shelf} />
@@ -50,7 +57,7 @@ class App extends Component {
                   <h1 className="App-title">BetterReads</h1>
                 </header>
                 <main>
-                  <Search />
+                  <Search handleSearch={this.handleSearch} />
                   <br/><br/>
                   <Books />
                   <p className="App-intro">
