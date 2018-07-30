@@ -27,7 +27,7 @@ class App extends Component {
   componentDidMount() {
     getBestSellers().then(books => {
       this.setState({
-        bestSellers: books.results.lists
+        bestSellers: books
       })
     }).then(x => console.log(this.state))
   }

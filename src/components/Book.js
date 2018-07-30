@@ -12,7 +12,7 @@ const Book = ({ bookNo, book, renderBook }) => {
     <div
       onClick={handleClick}
       className={bookNo}
-      style={{background: 'url(' + book.books[0].book_image + ')'}}
+      style={{background: 'url(' + book.image + ')'}}
       >
 
       </div>
@@ -20,3 +20,5 @@ const Book = ({ bookNo, book, renderBook }) => {
 }
 
 export default Book;
+
+// style={{background: 'url(' + book.books[0].book_image + ')'}}
