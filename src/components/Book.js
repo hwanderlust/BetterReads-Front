@@ -12,10 +12,14 @@ const Book = ({ bookNo, book, renderBook }) => {
     <div
       onClick={handleClick}
       className={bookNo}
-      style={{background: 'url(' + book.books[0].book_image + ')'}}
-      >
-
-      </div>
+      style={{
+        background: 'url(' + book.books[0].book_image + ')',
+        backgroundSize: 'contain',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      
+    </div>
   );
 }
 

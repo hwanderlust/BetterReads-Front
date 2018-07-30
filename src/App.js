@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import './App.css';
 
-import MenuContainer from './components/menu/MenuContainer'
+import Menu from './components/Menu'
 import Shelves from './components/Shelves'
 import Shelf from './components/Shelf'
 import Books from './components/Books'
@@ -53,7 +53,7 @@ class App extends Component {
     return (
       <div className="App container">
         <nav>
-          <MenuContainer handleMenu={this.handleMenu} menuStatus={this.state.menuStatus} />
+          <Menu />
         </nav>
 
         <Switch>

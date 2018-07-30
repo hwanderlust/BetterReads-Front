@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ActiveMenu = ({ handleMenu }) => {
+const Menu = ({ handleMenu }) => {
   return (
-    <ul className="active-menu" onMouseLeave={handleMenu}>
+    <ul className="menu">
       <li className="menu-item">Home</li>
       <li className="menu-item">Shelves</li>
       <li className="menu-item">Sign Up</li>
@@ -12,4 +12,4 @@ const ActiveMenu = ({ handleMenu }) => {
   )
 }
 
-export default ActiveMenu
+export default Menu
