@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Menu = ({ handleMenu }) => {
 
@@ -18,11 +19,11 @@ const Menu = ({ handleMenu }) => {
 
   return (
     <ul className="menu">
-      <li id='home' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Home</li>
-      <li id='shelves' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Shelves</li>
-      <li id='signup' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Sign Up</li>
-      <li id='login' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log In</li>
-      <li id='logout' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log Out</li>
+      <Link to='/home' id='home' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)}>Home</Link>
+      <Link to='/shelves' id='shelves' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Shelves</Link>
+      <Link to='/signup' id='signup' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Sign Up</Link>
+      <Link to='/login' id='login' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log In</Link>
+      <Link to='/logout' id='logout' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log Out</Link>
     </ul>
   )
 }
