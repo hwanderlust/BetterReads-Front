@@ -9,7 +9,7 @@ import Books from './components/Books'
 import Search from './components/Search'
 import { getBestSellers, searchRequest, createUser, createShelf } from './adapter'
 
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
 
@@ -46,7 +46,8 @@ class App extends Component {
     console.log('app renderBook');
     this.setState({
       currentBook: book
-    }, () => console.log(this.state))
+    }, () => this.props.history.push('/book'))
+
   }
 
   render() {
@@ -75,7 +76,6 @@ class App extends Component {
           <Route path='/home' render={props => {
             return (
               <div className='home'>
-                {this.state.currentBook ? <Redirect to='/book' /> : null}
                 <header className="App-header">
                   <h1 className="App-title">BetterReads</h1>
                 </header>
@@ -97,4 +97,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);
