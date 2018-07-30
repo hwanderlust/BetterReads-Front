@@ -13,7 +13,7 @@ export function searchRequest(searchTerm) {
 }
 
 export function createUser(userObj) {
-  let url = `http://localhost:3001/api/v1/users`
+  const url = `http://localhost:3001/api/v1/users`
   // debugger
   const options = {
     method: "POST",
@@ -22,4 +22,14 @@ export function createUser(userObj) {
   }
 
   return fetch(url, options).then(r => r.json()).then(signup => console.log(signup))
+}
+
+export function createShelf(shelfObj) {
+  const url = `http://localhost:3001/api/v1/shelves`
+  const options = {
+    method: "POST",
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(shelfObj)
+  }
+  return fetch(url, options).then(r => r.json())
 }

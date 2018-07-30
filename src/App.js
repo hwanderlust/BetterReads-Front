@@ -7,7 +7,7 @@ import Shelves from './components/Shelves'
 import Shelf from './components/Shelf'
 import Books from './components/Books'
 import Search from './components/Search'
-import { getBestSellers, searchRequest, createUser } from './adapter'
+import { getBestSellers, searchRequest, createUser, createShelf } from './adapter'
 
 import { Switch, Route, Redirect } from 'react-router-dom'
 import SignUp from './components/auth/SignUp'
@@ -47,7 +47,9 @@ class App extends Component {
             return <SignUp createUser={createUser}/>
           }} />
           <Route path='/login' component={Login} />
-          <Route path='/shelves' component={Shelves} />
+          <Route path='/shelves' render={props => {
+            <Shelves createShelf={createShelf} />
+          }} />
           <Route path='/shelf' component={Shelf} />
           <Route path='/carousel' component={Carousel} />
           <Route path='/home' render={props => {

@@ -3,8 +3,21 @@ import Shelf from './Shelf'
 
 const Shelves = props => {
   console.log('shelves loaded');
+
+  const addShelf = (e) => {
+    e.preventDefault()
+    const name = e.target.querySelector('input').value
+    const userId = 6
+    console.log('clicked', name);
+    props.createShelf({name, user_id: userId}).then(data => console.log(data))
+  }
+
   return (
     <div>
+      <button>Add Shelf</button>
+      <form onSubmit={e => addShelf(e)}>
+        <input placeholder='Shelf name'/>
+      </form>
       <div className='shelf-book-cover-top-left'></div>
       <div className='shelf-top-left book-cover-title'>
         <h1>Shelf Name</h1>
