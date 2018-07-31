@@ -1,13 +1,15 @@
 import React from 'react'
 import Shelf from './Shelf'
+import { Redirect } from 'react-router-dom'
+
 
 const Shelves = ({ createShelf, currentUser }) => {
 
   const addShelf = (e) => {
     e.preventDefault()
     const name = e.target.querySelector('input').value
-    const userId = props.currentUser.id
-    props.createShelf({name: name, user_id: userId})
+    const userId = currentUser.id
+    createShelf({name: name, user_id: userId})
   }
 
   const form = () => {
@@ -19,12 +21,21 @@ const Shelves = ({ createShelf, currentUser }) => {
     </div>
   }
 
-      return (
-      <div className='shelves-container'>
-        <div className='shelves-header'>
-          <h1>{currentUser ? currentUser.username : alert(`You're not logged in!`)}</h1>
-          <button>Add Shelf</button>
-        </div>
+  const loggedIn = () => {
+    if(currentUser){
+      return currentUser.username
+    } else {
+      alert(`You're not logged in!`)
+      return <Redirect to='/home' />
+    }
+  }
+
+  return (
+    <div className='shelves-container'>
+      <div className='shelves-header'>
+        <h1>{loggedIn()}</h1>
+        <button>Add Shelf</button>
+      </div>
       <div className='shelves-section'>
         <div className='shelf-info'>
           <div className='shelf-cover'></div>
