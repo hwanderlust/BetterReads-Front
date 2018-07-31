@@ -29,7 +29,7 @@ class App extends Component {
       this.setState({
         books: books
       })
-    }).then(x => console.log(this.state))
+    })
 
     const loggedIn = localStorage.getItem("token")
 
@@ -84,7 +84,7 @@ class App extends Component {
     searchRequest(input).then(data => {
       this.setState({
         books: data
-      }, () => console.log(this.state))
+      })
     });
   }
 
