@@ -10,21 +10,21 @@ const Shelves = ({ createShelf, currentUser }) => {
     props.createShelf({name: name, user_id: userId})
   }
 
-  return (
+  const form = () => {
     <div>
       <form onSubmit={(e) => addShelf(e)}>
         <input placeholder='Shelf name'/>
         <button>Add Shelf</button>
       </form>
-    )
+    </div>
   }
 
-  return (
-    <div className='shelves-container'>
-      <div className='shelves-header'>
-        <h1>{currentUser ? currentUser.username : alert(`You're not logged in!`)}</h1>
-        <button>Add Shelf</button>
-      </div>
+      return (
+      <div className='shelves-container'>
+        <div className='shelves-header'>
+          <h1>{currentUser ? currentUser.username : alert(`You're not logged in!`)}</h1>
+          <button>Add Shelf</button>
+        </div>
       <div className='shelves-section'>
         <div className='shelf-info'>
           <div className='shelf-cover'></div>
