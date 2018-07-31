@@ -1,37 +1,42 @@
 import React from 'react'
-import Email from '../form/Email'
-import Password from '../form/Password'
 
-const SignUp = props => {
-  console.log(props);
+class SignUp extends React.Component {
 
-  const handleSignUp = (e) => {
-    e.preventDefault()
-    // console.log("inside handleSignUp");
-    const username = e.target.querySelector('#username').value
-    const password = e.target.querySelector('#password').value
-    const name = e.target.querySelector('#name').value
-    props.createUser({username, password, name})
+  state ={
+    name: "",
+    username: "",
+    password: ""
   }
 
-  return (
-    <div className='form-page'>
-      <main className='form-container'>
-        <h1>Sign Up</h1>
-        <form className='form' onSubmit={(e) => handleSignUp(e)}>
-          <label className='form-labels'>Name</label>
-          <input id="name" type='text' placeholder='Name' className='form-inputs'/>
+  handleInputChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    })
+  }
 
-          <label className='form-labels'>Username</label>
-          <input id="username" type='text' placeholder='Username' className='form-inputs'/>
+  render() {
+    return (
+      <div className='form-page'>
+        <main className='form-container'>
+          <h1>Sign Up</h1>
+          <form className='form' onSubmit={(e) => {
+            e.preventDefault()
+            this.props.handleSignUp(this.state.username, this.state.password, this.state.name)
+          }}>
+            <label className='form-labels'>Name</label>
+            <input id="name" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Name' className='form-inputs' value={this.state.name}/>
 
-          <label className='form-labels'>Password</label>
-          <input id="password" type='password' placeholder='EequalsMsee2' className='form-inputs' />
-          <input type="submit"/>
-        </form>
-      </main>
-    </div>
-  )
+            <label className='form-labels'>Username</label>
+            <input id="username" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Username' className='form-inputs' value={this.state.username}/>
+
+            <label className='form-labels'>Password</label>
+            <input id="password" onChange={(e) => this.handleInputChange(e)} type='password' placeholder='EequalsMsee2' className='form-inputs' value={this.state.password}/>
+            <input type="submit"/>
+          </form>
+        </main>
+      </div>
+    )
+  }
 }
 
 export default SignUp

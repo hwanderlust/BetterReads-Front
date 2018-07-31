@@ -7,7 +7,7 @@ import Shelves from './components/Shelves'
 import Shelf from './components/Shelf'
 import Books from './components/Books'
 import Search from './components/Search'
-import { getBestSellers, searchRequest, createUser, createShelf } from './adapter'
+import { getBestSellers, searchRequest, createUser, createShelf, loginUser, getCurrentUser } from './adapter'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import SignUp from './components/auth/SignUp'
@@ -19,9 +19,9 @@ import BookDetails from './components/BookDetails'
 class App extends Component {
 
   state = {
-    menuStatus: false,
     books: null,
     currentBook: null,
+    currentUser: null,
   }
 
   componentDidMount() {
@@ -30,11 +30,56 @@ class App extends Component {
         books: books
       })
     }).then(x => console.log(this.state))
+
+    const loggedIn = localStorage.getItem("token")
+
+    if (loggedIn) {
+      getCurrentUser(loggedIn).then(user => {
+        if (user){
+          this.setState({
+            currentUser: user
+          })
+        } else {
+          this.handleLogout()
+        }
+      })
+    }
   }
 
-  handleMenu = () => {
-    console.log('hit fn');
-    this.setState({menuStatus: !this.state.menuStatus}, () => console.log(this.state))
+  handleSignUp = (username, password, name) => {
+    createUser({username, password, name}).then(data => {
+      getCurrentUser(data.token).then(user => {
+        this.setState({
+          currentUser: user
+        }, () => {
+          localStorage.setItem("token", data.token)
+          this.props.history.push('/shelves')
+        })
+      })
+    })
+  }
+
+  handleLogin = (username, password) => {
+    loginUser({username, password}).then(data => {
+      getCurrentUser(data.token).then(user => {
+        console.log("handleLogin in App.js", user);
+        this.setState({
+          currentUser: user
+        }, () => {
+          localStorage.setItem("token", data.token)
+          this.props.history.push('/shelves')
+        })
+      })
+    })
+  }
+
+  handleLogout = () => {
+    console.log("inside handleLogout in App.js");
+    localStorage.removeItem("token")
+    this.setState({
+      currentUser: null
+    })
+    this.props.history.push('/home')
   }
 
   handleSearch = (input) => {
@@ -51,14 +96,13 @@ class App extends Component {
     this.setState({
       currentBook: book
     }, () => this.props.history.push('/book'))
-
   }
 
   render() {
     return (
       <div className="App container">
         <nav>
-          <Menu />
+          <Menu currentUser={this.state.currentUser} logout={this.handleLogout}/>
         </nav>
 
         <Switch>
@@ -66,14 +110,20 @@ class App extends Component {
             return <Redirect to='/home' />
           }} />
           <Route path='/signup' render={props => {
-            return <SignUp createUser={createUser}/>
+            return <SignUp handleSignUp={this.handleSignUp}/>
           }} />
-          <Route path='/login' component={Login} />
+          <Route path='/login' render={props => {
+            return <Login handleLogin={this.handleLogin}/>
+          }} />
           <Route path='/shelves' render={props => {
             return <Shelves createShelf={createShelf} />
           }} />
           <Route path='/shelf' component={Shelf} />
           <Route path='/carousel' component={Carousel} />
+          <Route path='/logout' render={props => {
+            this.handleLogout()
+            return <Redirect to='/home' />
+          }} />
           <Route path='/book' render={props => {
             return <BookDetails book={this.state.currentBook} />
           }} />
