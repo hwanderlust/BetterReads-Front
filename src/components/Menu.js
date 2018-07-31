@@ -19,7 +19,6 @@ const Menu = ({ handleMenu, currentUser, logout }) => {
 
   return (
     <ul className="menu">
-      {console.log({currentUser})}
       <Link to='/home' id='home' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)}>Home</Link>
       <Link to='/shelves' id='shelves' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Shelves</Link>
       {currentUser ?
