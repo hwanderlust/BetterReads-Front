@@ -1,38 +1,60 @@
 import React from 'react'
 import Shelf from './Shelf'
 
-const Shelves = props => {
-  console.log('shelves loaded');
+const Shelves = ({ createShelf, currentUser }) => {
 
   const addShelf = (e) => {
     e.preventDefault()
     const name = e.target.querySelector('input').value
     const userId = 6
-    console.log('clicked', name);
-    props.createShelf({name, user_id: userId}).then(data => console.log(data))
+    createShelf({name, user_id: userId}).then(data => console.log(data))
   }
 
-  return (
-    <div>
-      <button>Add Shelf</button>
+  const renderForm = () => {
+    return (
       <form onSubmit={e => addShelf(e)}>
         <input placeholder='Shelf name'/>
       </form>
-      <div className='shelf-book-cover-top-left'></div>
-      <div className='shelf-top-left book-cover-title'>
-        <h1>Shelf Name</h1>
+    )
+  }
+
+  return (
+    <div className='shelves-container'>
+      <div className='shelves-header'>
+        <h1>{currentUser ? currentUser.username : alert(`You're not logged in!`)}</h1>
+        <button>Add Shelf</button>
       </div>
-      <div className='shelf-book-cover-top-right'></div>
-      <div className='shelf-top-right book-cover-title'>
-        <h1>Shelf Name</h1>
-      </div>
-      <div className='shelf-book-cover-bottom-left'></div>
-      <div className='shelf-bottom-left book-cover-title'>
-        <h1>Shelf Name</h1>
-      </div>
-      <div className='shelf-book-cover-bottom-right'></div>
-      <div className='shelf-bottom-right book-cover-title'>
-        <h1>Shelf Name</h1>
+      <div className='shelves-section'>
+        <div className='shelf-info'>
+          <div className='shelf-cover'></div>
+          <div className='shelf-name'>
+            <h1 className='vertical-name'>Shelf Name</h1>
+          </div>
+        </div>
+        <div className='shelf-info'>
+          <div className='shelf-cover'></div>
+          <div className='shelf-name'>
+            <h1 className='vertical-name'>Shelf Name</h1>
+          </div>
+        </div>
+        <div className='shelf-info'>
+          <div className='shelf-cover'></div>
+          <div className='shelf-name'>
+            <h1 className='vertical-name'>Shelf Name</h1>
+          </div>
+        </div>
+        <div className='shelf-info'>
+          <div className='shelf-cover'></div>
+          <div className='shelf-name'>
+            <h1 className='vertical-name'>Shelf Name</h1>
+          </div>
+        </div>
+        <div className='shelf-info'>
+          <div className='shelf-cover'></div>
+          <div className='shelf-name'>
+            <h1 className='vertical-name'>Shelf Name</h1>
+          </div>
+        </div>
       </div>
     </div>
   )

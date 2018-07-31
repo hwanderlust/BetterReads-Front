@@ -112,7 +112,7 @@ class App extends Component {
             return <Login handleLogin={this.handleLogin}/>
           }} />
           <Route path='/shelves' render={props => {
-            return <Shelves createShelf={createShelf} />
+            return <Shelves createShelf={createShelf} currentUser={this.state.currentUser} />
           }} />
           <Route path='/shelf' component={Shelf} />
           <Route path='/carousel' component={Carousel} />
