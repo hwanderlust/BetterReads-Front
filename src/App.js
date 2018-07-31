@@ -62,7 +62,6 @@ class App extends Component {
   handleLogin = (username, password) => {
     loginUser({username, password}).then(data => {
       getCurrentUser(data.token).then(user => {
-        console.log("handleLogin in App.js", user);
         this.setState({
           currentUser: user
         }, () => {
@@ -74,16 +73,14 @@ class App extends Component {
   }
 
   handleLogout = () => {
-    console.log("inside handleLogout in App.js");
     localStorage.removeItem("token")
     this.setState({
       currentUser: null
     })
-    this.props.history.push('/home')
+    // this.props.history.push('/home')
   }
 
   handleSearch = (input) => {
-    console.log(input);
     searchRequest(input).then(data => {
       this.setState({
         books: data
@@ -92,7 +89,6 @@ class App extends Component {
   }
 
   renderBook = (book) => {
-    console.log('app renderBook');
     this.setState({
       currentBook: book
     }, () => this.props.history.push('/book'))
@@ -102,7 +98,7 @@ class App extends Component {
     return (
       <div className="App container">
         <nav>
-          <Menu currentUser={this.state.currentUser} logout={this.handleLogout}/>
+          <Menu currentUser={this.state.currentUser} />
         </nav>
 
         <Switch>
