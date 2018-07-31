@@ -1,7 +1,5 @@
 import React from 'react'
-import Shelf from './Shelf'
 import { Redirect } from 'react-router-dom'
-
 
 const Shelves = ({ createShelf, currentUser }) => {
 
