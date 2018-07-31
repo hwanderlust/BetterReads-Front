@@ -73,63 +73,30 @@ nav {
    text-align: center;
 }
 
+.books-container {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+}
+
 .books-section {
   background-color: grey;
-  min-height: 30em;
+  height: 30em;
+  width: 70em;
   overflow: scroll;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
 }
 
-.books-section .book-1 {
-  text-align: center;
-  width: 150px;
-  height: 200px;
-  position: absolute;
-  top: 38%;
-  left: 23%;
-  background-size: contain;
-  background-repeat: no-repeat;
+.book {
+  margin: 20px;
+  flex: 1;
+  align-self: center;
 }
 
-.books-section .book-2 {
-  text-align: center;
-  width: 200px;
-  height: 350px;
-  position: absolute;
-  top: 56%;
-  left: 32%;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.book-3 {
-  text-align: center;
-  width: 150px;
-  height: 250px;
-  position: absolute;
-  top: 41%;
-  left: 37%;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.book-4 {
-  text-align: center;
-  width: 150px;
-  height: 250px;
-  position: absolute;
-  top: 37%;
-  left: 50%;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.book-5 {
-  text-align: center;
-  width: 150px;
-  height: 250px;
-  position: absolute;
-  top: 60%;
-  left: 55%;
+.book img {
   background-size: contain;
   background-repeat: no-repeat;
 }

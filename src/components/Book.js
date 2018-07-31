@@ -23,17 +23,11 @@ const Book = ({ bookNo, book, renderBook }) => {
       onClick={handleClick}
       onMouseEnter={(e) => hover(e)}
       onMouseLeave={(e) => stopHover(e)}
-      
+      className='book'
     >
-      <img className={bookNo} src={book.image}
-        style={{
-          backgroundSize: 'contain',
-          backgroundRepeat: 'no-repeat'
-        }} />
+      <img src={book.image} />
     </div>
   );
 }
 
 export default Book;
-
-// style={{background: 'url(' + book.books[0].book_image + ')'}}

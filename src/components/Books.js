@@ -3,17 +3,18 @@ import Book from './Book'
 
 const Books = ({ books, renderBook }) => {
   console.log(books);
-  let bookNum = 0
-  const renderBooks = books.slice().splice(0,5).map(book => {
-    ++bookNum
-    return <Book key={book.list_id} bookNo={`book-${bookNum}`} book={book} renderBook={renderBook} />
+
+  const renderBooks = books.map(book => {
+    return <Book key={book.list_id} book={book} renderBook={renderBook} />
   })
 
   return (
-    <div className='books-section'>
-      { renderBooks }
+    <div className='books-container'>
+      <div className='books-section'>
+        { renderBooks }
+      </div>
     </div>
-  );
+      );
 }
 
 export default Books;
