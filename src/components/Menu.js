@@ -20,9 +20,11 @@ const Menu = ({ handleMenu, currentUser, logout }) => {
   return (
     <ul className="menu">
       <Link to='/home' id='home' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)}>Home</Link>
-      <Link to='/shelves' id='shelves' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Shelves</Link>
       {currentUser ?
-        <Link to='/logout' id='logout' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log Out</Link>
+        <Fragment>
+          <Link to='/logout' id='logout' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log Out</Link>
+          <Link to='/shelves' id='shelves' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Shelves</Link>
+        </Fragment>
         : (
         <Fragment>
           <Link to='/signup' id='signup' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Sign Up</Link>

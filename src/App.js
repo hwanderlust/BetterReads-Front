@@ -112,7 +112,7 @@ class App extends Component {
             return <Login handleLogin={this.handleLogin}/>
           }} />
           <Route path='/shelves' render={props => {
-            return <Shelves createShelf={createShelf} currentUser={this.state.currentUser} />
+            return <Shelves createShelf={createShelf} currentUser={this.state.currentUser}/>
           }} />
           <Route path='/shelf' component={Shelf} />
           <Route path='/carousel' component={Carousel} />
@@ -133,9 +133,6 @@ class App extends Component {
                   <Search handleSearch={this.handleSearch} />
                   <br/><br/>
                   {this.state.books ? <Books books={this.state.books} renderBook={this.renderBook} /> : null}
-                  <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                  </p>
                 </main>
               </div>
             )

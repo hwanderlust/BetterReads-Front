@@ -6,14 +6,15 @@ const Shelves = ({ createShelf, currentUser }) => {
   const addShelf = (e) => {
     e.preventDefault()
     const name = e.target.querySelector('input').value
-    const userId = 6
-    createShelf({name, user_id: userId}).then(data => console.log(data))
+    const userId = props.currentUser.id
+    props.createShelf({name: name, user_id: userId})
   }
 
-  const renderForm = () => {
-    return (
-      <form onSubmit={e => addShelf(e)}>
+  return (
+    <div>
+      <form onSubmit={(e) => addShelf(e)}>
         <input placeholder='Shelf name'/>
+        <button>Add Shelf</button>
       </form>
     )
   }
