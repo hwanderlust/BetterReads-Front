@@ -21,7 +21,11 @@ class SignUp extends React.Component {
           <h1>Sign Up</h1>
           <form className='form' onSubmit={(e) => {
             e.preventDefault()
-            this.props.handleSignUp(this.state.username, this.state.password, this.state.name)
+            if(this.state.password.length >= 6) {
+              this.props.handleSignUp(this.state.username, this.state.password, this.state.name)
+            } else {
+              e.target.querySelector('#password').style = 'outline: none; border: 1px solid red;'
+            }
           }}>
             <label className='form-labels'>Name</label>
             <input id="name" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Name' className='form-inputs' value={this.state.name}/>

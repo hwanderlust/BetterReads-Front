@@ -55,7 +55,7 @@ class App extends Component {
           currentUser: user
         }, () => {
           localStorage.setItem("token", data.token)
-          this.props.history.push('/shelves')
+          this.props.history.push('/home')
         })
       })
     })
