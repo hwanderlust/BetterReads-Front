@@ -252,7 +252,21 @@ nav {
 }
 
 .form-container {
+  height: 80vh;
   max-width: 600px;
+  background: url('https://i.pinimg.com/736x/86/14/b2/8614b2d44953dd777da0422b515cb1c2--antique-books-vintage-books.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.form-container h1 {
+  align-self: center;
+  color: #e5cce5;
 }
 
 .form {
@@ -261,6 +275,8 @@ nav {
   align-content: center;
   flex-wrap: wrap;
   justify-content: space-between;
+  color: white;
+  background-color: rgba(135, 75, 175, 0.3);
 }
 
 .form-labels {
