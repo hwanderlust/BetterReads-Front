@@ -14,7 +14,25 @@ class SignUp extends React.Component {
     })
   }
 
+
   render() {
+
+    const { handleSignUp, usernames } = this.props
+
+    const validateUsername = (e) => {
+      if(usernames) {
+        if(usernames.includes(e.target.value)) {
+          e.target.style = 'outline: none; border: 1px solid red;'
+        }
+      }
+    }
+
+    const validatePassword = (e) => {
+      if(e.target.value.length <= 6) {
+        e.target.style = 'outline: none; border: 1px solid red;'
+      }
+    }
+
     return (
       <div className='form-page'>
         <main className='form-container'>
@@ -22,19 +40,17 @@ class SignUp extends React.Component {
           <form className='form' onSubmit={(e) => {
             e.preventDefault()
             if(this.state.password.length >= 6) {
-              this.props.handleSignUp(this.state.username, this.state.password, this.state.name)
-            } else {
-              e.target.querySelector('#password').style = 'outline: none; border: 1px solid red;'
+              handleSignUp(this.state.username, this.state.password, this.state.name)
             }
           }}>
             <label className='form-labels'>Name</label>
-            <input id="name" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Name' className='form-inputs' value={this.state.name}/>
+            <input id="name" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Name' className='form-inputs' value={this.state.name} />
 
             <label className='form-labels'>Username</label>
-            <input id="username" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Username' className='form-inputs' value={this.state.username}/>
+            <input id="username" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Username' className='form-inputs' onBlur={(e) => validateUsername(e)}  value={this.state.username}/>
 
             <label className='form-labels'>Password</label>
-            <input id="password" onChange={(e) => this.handleInputChange(e)} type='password' placeholder='EequalsMsee2' className='form-inputs' value={this.state.password}/>
+            <input id="password" onChange={(e) => this.handleInputChange(e)} type='password' placeholder='EequalsMsee2' className='form-inputs' onBlur={(e) => validatePassword(e)} value={this.state.password}/>
             <input type="submit"/>
           </form>
         </main>

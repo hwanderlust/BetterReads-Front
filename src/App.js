@@ -27,6 +27,7 @@ class App extends Component {
     shelves: null,
     activeComponent: 'home',
     currentShelf: null,
+    usernames: null,
   }
 
   componentDidMount() {
@@ -49,6 +50,9 @@ class App extends Component {
         }
       })
     }
+
+    const usernames = this.getUsernames()
+    this.setState({usernames})
   }
 
   handleMenuStyle = () => {
@@ -57,13 +61,11 @@ class App extends Component {
     }
   }
 
-  findUser = (userName) => {
-    const allUsers = getAllUsers().then(users => console.log(users))
-    console.log(allUsers);
-
-    // allUsers.map((user) => {
-    //   user.username === userName
-    // })
+  getUsernames = () => {
+    const allUsers = []
+    getAllUsers().then(users => users.map(user => allUsers.push(user.username)))
+    console.log(allUsers)
+    return allUsers
   }
 
   handleSignUp = (username, password, name) => {
@@ -155,7 +157,7 @@ class App extends Component {
             return <Redirect to='/home' />
           }} />
           <Route path='/signup' render={props => {
-            return <SignUp handleSignUp={this.handleSignUp}/>
+            return <SignUp handleSignUp={this.handleSignUp} usernames={this.state.usernames} />
           }} />
           <Route path='/login' render={props => {
             return <Login handleLogin={this.handleLogin}/>
