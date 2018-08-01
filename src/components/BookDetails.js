@@ -37,10 +37,10 @@ class BookDetails extends React.Component {
   renderShelves = () => {
     return (
       <div>
-        <select onChange={(e) => this.handleChange(e)}>
+        <select onChange={(e) => this.handleChange(e)} className='button-color'>
           {this.props.shelves.map(shelf => <option value={shelf[0].id}>{shelf[0].name}</option>)}
         </select>
-        <button onClick={this.addBookToShelf}>Add to Shelf</button>
+        <button onClick={this.addBookToShelf} className='button-color'>Add to Shelf</button>
       </div>
     )
   }
@@ -48,13 +48,15 @@ class BookDetails extends React.Component {
   render() {
     return (
       this.props.book ?
-      <div>
-        <h1>{this.props.book.title}</h1>
-        { this.state.addBook ? this.renderShelves() : <button onClick={this.handleClick}>Add Book to a Shelf</button> }
-        <br/>
-        <img src={this.props.book.image} />
-        <h3>{this.props.book.author}</h3>
-        <p>{this.props.book.description}</p>
+      <div className='book-details-container'>
+        <div className='wrapper'>
+          <h1 className='white-font'>{this.props.book.title}</h1>
+          { this.state.addBook ? this.renderShelves() : <button onClick={this.handleClick} className='form-inputs button-color'>Add Book to a Shelf</button> }
+          <br/>
+          <img className='' src={this.props.book.image} />
+          <h3 className='white-font'>{this.props.book.author}</h3>
+          <p className='white-font'>{this.props.book.description}</p>
+        </div>
       </div>
       : null
     )

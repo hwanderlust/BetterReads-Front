@@ -104,25 +104,25 @@ nav {
 }
 
 .shelves-container {
-  display: grid;
-  grid-template-rows: auto;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-content: center;
+  min-height: 80vh;
 }
 
 .shelves-header {
   background-color: #260026;
   color: rgba(255, 255, 255, 0.9);
-}
-
-.shelf-form-container {
-
+  min-height: 100px;
+  padding: 10px;
 }
 
 .shelves-section {
   background-color: #83677B;
   height: 30em;
-  width: 70em;
+  min-width: 70em;
+  max-width: 80em;
   overflow: scroll;
   display: flex;
   flex-direction: row;
@@ -220,6 +220,28 @@ nav {
   flex: 1;
   align-self: center;
   box-shadow: 5px 5px #888888;
+}
+
+.book-details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+}
+
+.wrapper {
+  align-self: center;
+}
+
+.white-font {
+  color: white;
+}
+
+.button-color {
+  background-color: #501B1D;
+  color: white;
+  border-radius: 10px;
+  width: 200px;
 }
 
 .form-page {
