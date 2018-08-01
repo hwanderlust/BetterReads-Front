@@ -295,4 +295,13 @@ nav {
 .form-inputs {
   width: 50em;
   height: 2.5em;
+  margin-left: 20px;
+}
+
+.form-button {
+  margin-left: 20px;
+  background-color: #501B1D;
+  color: white;
+  min-width: 100px;
+  min-height: 30px;
 }

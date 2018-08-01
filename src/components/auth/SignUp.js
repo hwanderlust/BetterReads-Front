@@ -51,7 +51,7 @@ class SignUp extends React.Component {
 
             <label className='form-labels'>Password</label>
             <input id="password" onChange={(e) => this.handleInputChange(e)} type='password' placeholder='EequalsMsee2' className='form-inputs' onBlur={(e) => validatePassword(e)} value={this.state.password}/>
-            <input type="submit"/>
+            <input className='form-button' type="submit"/>
           </form>
         </main>
       </div>
