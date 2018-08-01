@@ -43,12 +43,11 @@ class App extends Component {
         if (user){
           this.setState({
             currentUser: user
-          })
+          }, () => this.getShelves())
         } else {
           this.handleLogout()
         }
       })
-      .then(data => this.getShelves())
     }
   }
 
@@ -120,10 +119,13 @@ class App extends Component {
   }
 
   getShelves = () => {
-    getUserShelves(this.state.currentUser.id, localStorage.getItem('token'))
-    .then(shelves => {
-      this.setState({shelves})
-    })
+    if(this.state.currentUser) {
+      getUserShelves(this.state.currentUser.id, localStorage.getItem('token'))
+      .then(shelves => {
+        this.setState({shelves})
+      })
+      .then(data => console.log(this.state))
+    }
   }
 
   handleNewShelf = (shelfObj) => {
