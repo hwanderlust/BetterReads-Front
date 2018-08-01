@@ -2,19 +2,21 @@ import React, { Component } from 'react';
 
 import './App.css';
 
-import Menu from './components/Menu'
-import Shelves from './components/Shelves'
-import Shelf from './components/Shelf'
-import Books from './components/Books'
-import Search from './components/Search'
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import { getBestSellers, searchRequest, createUser, createShelf, loginUser, getCurrentUser, getUserShelves, createBook } from './adapter'
 
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
+import Menu from './components/Menu'
 import SignUp from './components/auth/SignUp'
 import Login from './components/auth/Login'
+import NotFound from './components/NotFound'
 
-import Carousel from './components/Carousel'
+import Shelves from './components/Shelves'
+import Shelf from './components/Shelf'
+
+import Books from './components/Books'
 import BookDetails from './components/BookDetails'
+
+import Search from './components/Search'
 
 class App extends Component {
 
@@ -24,6 +26,7 @@ class App extends Component {
     currentUser: null,
     shelves: null,
     activeComponent: 'home',
+    currentShelf: null,
   }
 
   componentDidMount() {
@@ -51,7 +54,7 @@ class App extends Component {
 
   handleMenuStyle = () => {
     if(this.state.activeComponent !== document.location.pathname) {
-      this.setState({activeComponent: document.location.pathname}, () => console.log(this.state))
+      this.setState({activeComponent: document.location.pathname})
     }
   }
 
@@ -118,6 +121,10 @@ class App extends Component {
     .then(book => this.props.history.push('/shelves'))
   }
 
+  renderShelf = (shelf) => {
+    this.setState({currentShelf: shelf}, () => this.props.history.push('/shelf'))
+  }
+
   render() {
     { this.handleMenuStyle() }
     return (
@@ -137,10 +144,12 @@ class App extends Component {
             return <Login handleLogin={this.handleLogin}/>
           }} />
           <Route path='/shelves' render={props => {
-            return <Shelves handleNewShelf={this.handleNewShelf} shelves={this.state.shelves} currentUser={this.state.currentUser}/>
+            return <Shelves handleNewShelf={this.handleNewShelf} shelves={this.state.shelves} currentUser={this.state.currentUser}
+              renderShelf={this.renderShelf} />
           }} />
-          <Route path='/shelf' component={Shelf} />
-          <Route path='/carousel' component={Carousel} />
+          <Route path='/shelf' render={props => {
+            return <Shelf shelf={this.state.currentShelf}/>
+          }} />
           <Route path='/logout' render={props => {
             this.handleLogout()
             return <Redirect to='/home' />
@@ -148,6 +157,7 @@ class App extends Component {
           <Route path='/book' render={props => {
             return <BookDetails shelves={this.state.shelves} book={this.state.currentBook} handleNewBook={this.handleNewBook} />
           }} />
+          <Route path="/404" component={NotFound} />
           <Route path='/home' render={props => {
             return (
               <div className='home'>

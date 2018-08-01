@@ -41,7 +41,6 @@ class Shelves extends React.Component {
   }
 
   render() {
-    console.log(this.props.shelves);
     return (
       <div className='shelves-container'>
         <div className='shelves-header'>
@@ -49,8 +48,8 @@ class Shelves extends React.Component {
           { this.state.addShelf ? this.renderForm() : <button onClick={this.showForm}>Add Shelf</button> }
         </div>
         <div className='shelves-section'>
-
-          { this.props.shelves ? this.props.shelves.map(shelf => <ShelfDisplay shelf={shelf} />) : <h1>Awwwww no shelves :(</h1> }
+          
+          { this.props.shelves ? this.props.shelves.map(shelf => <ShelfDisplay renderShelf={this.props.renderShelf} shelf={shelf} />) : <h1>Awwwww no shelves :(</h1> }
         </div>
       </div>
     )

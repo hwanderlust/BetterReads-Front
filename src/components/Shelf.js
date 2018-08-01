@@ -1,7 +1,6 @@
 import React from 'react'
-import Book from './Book'
 
-const Shelf = props => {
+const Shelf = ({shelf}) => {
 
   const renderSpines = () => {
     // map over list of books
@@ -15,19 +14,16 @@ const Shelf = props => {
 
   return (
     <div className='shelf'>
-      <section className='spines'>
-        <div className='spine'>Spine 1</div>
-        <div className='spine'>Spine 2</div>
-        <div className='spine'>Spine 3</div>
-
+      {console.log(shelf[1])}
+      <header className='shelf-header'>
+        <h1>{shelf[0].name}</h1>
+      </header>
+      <aside className='spines'>
+        { shelf[1].map(book => <div className='spine'>{book.title}</div>) }
+      </aside>
+      <section className='books-list'>
+        { shelf[1].map(book => <div><img className='book' src={book.image} /></div> ) }
       </section>
-      <main className='books-list'>
-        <div className='book'>Book 1</div>
-        <div className='book'>Book 2</div>
-        <div className='book'>Book 3</div>
-        <div className='book'>Book 4</div>
-        <div className='book'>Book 5</div>
-      </main>
     </div>
   )
 }
