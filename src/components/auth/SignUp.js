@@ -29,7 +29,7 @@ class SignUp extends React.Component {
           }}>
             <label className='form-labels'>Name</label>
             <input id="name" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Name' className='form-inputs' value={this.state.name}/>
-
+            
             <label className='form-labels'>Username</label>
             <input id="username" onChange={(e) => this.handleInputChange(e)} type='text' placeholder='Username' className='form-inputs' value={this.state.username}/>
 

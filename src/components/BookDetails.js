@@ -14,7 +14,6 @@ class BookDetails extends React.Component {
 
   initialShelf = () => {
     if(this.props.shelves[0]) {
-      debugger
       this.setState({
         selectedShelf: this.props.shelves[0][0].id
       })
@@ -40,7 +39,7 @@ class BookDetails extends React.Component {
     return (
       <div>
         <select onChange={(e) => this.handleChange(e)}>
-          {this.props.shelves.map(shelf => <option value={shelf.id}>{shelf.name}</option>)}
+          {this.props.shelves.map(shelf => <option value={shelf[0].id}>{shelf[0].name}</option>)}
         </select>
         <button onClick={this.addBookToShelf}>Add to Shelf</button>
       </div>
