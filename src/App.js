@@ -77,7 +77,7 @@ class App extends Component {
           this.props.history.push('/home')
         })
       })
-    }
+    })
   }
 
   handleLogin = (username, password) => {
