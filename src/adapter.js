@@ -75,7 +75,6 @@ export function getUserShelves(id, token){
 }
 
 export function createBook(bookObj, shelfId){
-  debugger
   const url = `http://localhost:3001/api/v1/books`
   const options = {
     method: "POST",
@@ -83,5 +82,5 @@ export function createBook(bookObj, shelfId){
     body: JSON.stringify({book: bookObj, shelf: shelfId})
   }
 
-  return fetch(url, options).then(r => r.json()).then(book => console.log(book))
+  return fetch(url, options).then(r => r.json())
 }

@@ -23,6 +23,7 @@ class App extends Component {
     currentBook: null,
     currentUser: null,
     shelves: null,
+    activeComponent: 'home',
   }
 
   componentDidMount() {
@@ -45,6 +46,12 @@ class App extends Component {
         }
       })
       .then(data => this.getShelves())
+    }
+  }
+
+  handleMenuStyle = () => {
+    if(this.state.activeComponent !== document.location.pathname) {
+      this.setState({activeComponent: document.location.pathname}, () => console.log(this.state))
     }
   }
 
@@ -106,11 +113,17 @@ class App extends Component {
     createShelf(shelfObj).then(data => this.getShelves())
   }
 
+  handleNewBook = (newBook, shelf) => {
+    createBook(newBook, shelf)
+    .then(book => this.props.history.push('/shelves'))
+  }
+
   render() {
+    { this.handleMenuStyle() }
     return (
       <div className="App container">
         <nav>
-          <Menu currentUser={this.state.currentUser} />
+          <Menu currentUser={this.state.currentUser} currentComponent={this.state.activeComponent} />
         </nav>
 
         <Switch>
@@ -133,7 +146,7 @@ class App extends Component {
             return <Redirect to='/home' />
           }} />
           <Route path='/book' render={props => {
-            return <BookDetails shelves={this.state.shelves} book={this.state.currentBook} createBook={createBook}/>
+            return <BookDetails shelves={this.state.shelves} book={this.state.currentBook} handleNewBook={this.handleNewBook} />
           }} />
           <Route path='/home' render={props => {
             return (

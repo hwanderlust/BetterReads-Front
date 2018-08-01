@@ -25,8 +25,7 @@ class BookDetails extends React.Component {
   }
 
   addBookToShelf = () => {
-    // console.log(this.props.book)
-    this.props.createBook(this.props.book, this.state.selectedShelf)
+    this.props.handleNewBook(this.props.book, this.state.selectedShelf)
   }
 
   handleChange = (e) => {
@@ -47,7 +46,6 @@ class BookDetails extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       this.props.book ?
       <div>
