@@ -43,13 +43,15 @@ class Shelves extends React.Component {
   render() {
     return (
       <div className='shelves-container'>
-        <div className='shelves-header'>
-          <h1>{this.loggedIn()}</h1>
-          { this.state.addShelf ? this.renderForm() : <button onClick={this.showForm}>Add Shelf</button> }
-        </div>
-        <div className='shelves-section'>
-          
-          { this.props.shelves ? this.props.shelves.map(shelf => <ShelfDisplay renderShelf={this.props.renderShelf} shelf={shelf} />) : <h1>Awwwww no shelves :(</h1> }
+        <div className='wrapper'>
+          <div className='shelves-header'>
+            <h1>{this.loggedIn()}</h1>
+            { this.state.addShelf ? this.renderForm() : <button onClick={this.showForm}>Add Shelf</button> }
+          </div>
+          <div className='shelves-section'>
+
+            { this.props.shelves ? this.props.shelves.map(shelf => <ShelfDisplay renderShelf={this.props.renderShelf} shelf={shelf} />) : <h1>Awwwww no shelves :(</h1> }
+          </div>
         </div>
       </div>
     )
