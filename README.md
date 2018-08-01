@@ -1,6 +1,23 @@
 ## BetterReads
-Our remixed GoodReads clone (front end only)
+Our remixed GoodReads clone (frontend only, backend is in another repo)
 
+## Features
+- Get NYT best seller books on landing page
+- Search for books via Google Books API
+- Create an account / Log into your own account
+- Save books to "shelves" or lists into your categories of your own liking
+
+## Resources Used
+- NYT API and Google Books API
+- React and Ruby on Rails 
+- CSS Grid
+- Flexbox
+
+## Programmers and Designers
+- @LHON001
+- @PABLOPAWPAW
+
+## React CLI Info
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
