@@ -102,7 +102,10 @@ class App extends Component {
   renderBook = (book) => {
     this.setState({
       currentBook: book
-    }, () => this.props.history.push('/book'))
+    }, () => {
+      console.log(this.state)
+      this.props.history.push('/book')
+    })
   }
 
   getShelves = () => {
@@ -118,7 +121,8 @@ class App extends Component {
 
   handleNewBook = (newBook, shelf) => {
     createBook(newBook, shelf)
-    .then(book => this.props.history.push('/shelves'))
+    .then(book => this.getShelves())
+    .then(data => this.props.history.push('/shelves'))
   }
 
   renderShelf = (shelf) => {
@@ -148,14 +152,14 @@ class App extends Component {
               renderShelf={this.renderShelf} />
           }} />
           <Route path='/shelf' render={props => {
-            return <Shelf shelf={this.state.currentShelf}/>
+            return <Shelf shelf={this.state.currentShelf} renderBook={this.renderBook}/>
           }} />
           <Route path='/logout' render={props => {
             this.handleLogout()
             return <Redirect to='/home' />
           }} />
           <Route path='/book' render={props => {
-            return <BookDetails shelves={this.state.shelves} book={this.state.currentBook} handleNewBook={this.handleNewBook} />
+            return <BookDetails shelves={this.state.shelves} book={this.state.currentBook} handleNewBook={this.handleNewBook}/>
           }} />
           <Route path="/404" component={NotFound} />
           <Route path='/home' render={props => {

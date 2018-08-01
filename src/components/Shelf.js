@@ -1,15 +1,9 @@
 import React from 'react'
 
-const Shelf = ({shelf}) => {
+const Shelf = ({shelf, renderBook}) => {
 
-  const renderSpines = () => {
-    // map over list of books
-    // render <div className='spine'>Spine</div>
-  }
-
-  const renderBooks = () => {
-    // map over list of books
-    // render <div className='book'>Book</div>
+  const showBook = (book) => {
+    renderBook(book)
   }
 
   return (
@@ -22,7 +16,7 @@ const Shelf = ({shelf}) => {
         { shelf[1].map(book => <div className='spine'>{book.title}</div>) }
       </aside>
       <section className='books-list'>
-        { shelf[1].map(book => <div><img className='book' src={book.image} /></div> ) }
+        { shelf[1].map(book => <div onClick={() => showBook(book)}><img className='book' src={book.image} /></div> ) }
       </section>
     </div>
   )

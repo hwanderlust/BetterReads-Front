@@ -113,7 +113,6 @@ nav {
 .shelves-header {
   background-color: #260026;
   color: rgba(255, 255, 255, 0.9);
-
 }
 
 .shelf-form-container {
@@ -121,7 +120,7 @@ nav {
 }
 
 .shelves-section {
-  background-color: grey;
+  background-color: #83677B;
   height: 30em;
   width: 70em;
   overflow: scroll;
@@ -175,6 +174,8 @@ nav {
 
 .shelf-header {
   width: 100%;
+  background-color: #260026;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .spines {
@@ -186,9 +187,12 @@ nav {
   align-items: stretch;
   padding: 10px;
   border: 1px solid black;
+  background-color: rgba(131, 104, 123, 0.5);
+  color: white;
 }
 
 .shelf .books-list {
+  flex: 1;
   height: 70vh;
   overflow: scroll;
   padding: 10%;
@@ -196,6 +200,7 @@ nav {
   flex-direction: column;
   justify-content: flex-start;
   border: 1px solid black;
+  background-color: rgba(131, 104, 123, 1);
 }
 
 .spine {
