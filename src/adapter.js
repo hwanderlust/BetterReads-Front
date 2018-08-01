@@ -22,7 +22,6 @@ export function createUser(userObj) {
 }
 
 export function createShelf(shelfObj) {
-  // debugger
   const url = `http://localhost:3001/api/v1/shelves`
   const options = {
     method: "POST",
