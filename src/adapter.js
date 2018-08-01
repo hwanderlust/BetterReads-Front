@@ -60,3 +60,17 @@ export function getCurrentUser(token){
 
   return fetch(url, options).then(r => r.json())
 }
+
+export function getUserShelves(id, token){
+  const url = `http://localhost:3001/api/v1/users/${id}/shelves`
+  const options = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accepts: "application/json",
+      Authorization: token
+    }
+  }
+
+  return fetch(url, options).then(r => r.json())
+}

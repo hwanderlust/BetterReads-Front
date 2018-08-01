@@ -37,7 +37,7 @@ nav {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  min-height: 80vh;
+  height: 100%;
   align-items: flex-start;
   background-color: pink;
   margin: 0;
@@ -81,8 +81,8 @@ nav {
 
 .books-section {
   background-color: grey;
-  height: 300px;
-  width: 700px;
+  height: 500px;
+  width: 900px;
   overflow: scroll;
   display: flex;
   flex-direction: row;
@@ -103,13 +103,17 @@ nav {
 
 .shelves-container {
   display: grid;
-  grid-template-rows: 100px auto;
+  grid-template-rows: auto;
   justify-content: center;
   align-content: center;
 }
 
 .shelves-header {
   background-color: yellow;
+}
+
+.shelf-form-container {
+
 }
 
 .shelves-section {

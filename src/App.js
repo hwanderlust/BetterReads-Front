@@ -7,7 +7,7 @@ import Shelves from './components/Shelves'
 import Shelf from './components/Shelf'
 import Books from './components/Books'
 import Search from './components/Search'
-import { getBestSellers, searchRequest, createUser, createShelf, loginUser, getCurrentUser } from './adapter'
+import { getBestSellers, searchRequest, createUser, createShelf, loginUser, getCurrentUser, getUserShelves } from './adapter'
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
 import SignUp from './components/auth/SignUp'
@@ -22,6 +22,7 @@ class App extends Component {
     books: null,
     currentBook: null,
     currentUser: null,
+    shelves: null,
   }
 
   componentDidMount() {
@@ -43,6 +44,7 @@ class App extends Component {
           this.handleLogout()
         }
       })
+      .then(data => this.getShelves())
     }
   }
 
@@ -66,7 +68,7 @@ class App extends Component {
           currentUser: user
         }, () => {
           localStorage.setItem("token", data.token)
-          this.props.history.push('/shelves')
+          this.props.history.push('/home')
         })
       })
     })
@@ -93,6 +95,17 @@ class App extends Component {
     }, () => this.props.history.push('/book'))
   }
 
+  getShelves = () => {
+    getUserShelves(this.state.currentUser.id, localStorage.getItem('token'))
+    .then(shelves => {
+      this.setState({shelves})
+    })
+  }
+
+  handleNewShelf = (shelfObj) => {
+    createShelf(shelfObj).then(data => this.getShelves())
+  }
+
   render() {
     return (
       <div className="App container">
@@ -111,7 +124,7 @@ class App extends Component {
             return <Login handleLogin={this.handleLogin}/>
           }} />
           <Route path='/shelves' render={props => {
-            return <Shelves createShelf={createShelf} currentUser={this.state.currentUser}/>
+            return <Shelves handleNewShelf={this.handleNewShelf} shelves={this.state.shelves} currentUser={this.state.currentUser}/>
           }} />
           <Route path='/shelf' component={Shelf} />
           <Route path='/carousel' component={Carousel} />
@@ -131,7 +144,7 @@ class App extends Component {
                 <main>
                   <Search handleSearch={this.handleSearch} />
                   <br/><br/>
-                  {this.state.books ? <Books books={this.state.books} renderBook={this.renderBook} /> : null}
+                  {this.state.books ? <Books books={this.state.books} renderBook={this.renderBook} /> : <img alt='flipbook gif' src='https://images.gr-assets.com/hostedimages/1496786980ra/22952794.gif' />}
                 </main>
               </div>
             )
