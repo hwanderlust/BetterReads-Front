@@ -26,23 +26,30 @@ class Menu extends React.Component {
     const activeComponentStyle = () => {
       switch(currentComponent) {
         case '/home':
-          document.getElementById('home').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-          break
+          if (document.getElementById('home')){
+            document.getElementById('home').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
+            break
+          }
         case '/shelves':
-          document.getElementById('shelves').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-          break
+          if (document.getElementById('shelves')){
+            document.getElementById('shelves').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
+            break
+          }
         case '/signup':
-          document.getElementById('signup').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-          break
+          if (document.getElementById('signup')){
+            document.getElementById('signup').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
+            break
+          }
         case '/login':
-          document.getElementById('login').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-          break
+          if (document.getElementById('login')){
+            document.getElementById('login').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
+            break
+          }
       }
     }
 
     return (
       <ul className="menu">
-        { activeComponentStyle() }
         <Link to='/home' id='home' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)}>Home</Link>
         {currentUser ?
           <Fragment>
@@ -55,6 +62,7 @@ class Menu extends React.Component {
             <Link to='/login' id='login' className="menu-item" onMouseEnter={(e) => hover(e)} onMouseLeave={e => stop(e)} >Log In</Link>
           </Fragment>
         )}
+        { activeComponentStyle() }
       </ul>
     )
   }
