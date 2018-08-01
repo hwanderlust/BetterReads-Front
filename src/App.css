@@ -227,10 +227,19 @@ nav {
   flex-direction: column;
   justify-content: center;
   padding: 10%;
+  background-color: rgba(131, 104, 123, 1);
 }
 
 .wrapper {
   align-self: center;
+}
+
+.wrapper-background {
+  background-color: #260026;
+}
+
+.wrapper-border {
+  border: 1px solid #501B1D;
 }
 
 .white-font {

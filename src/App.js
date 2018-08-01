@@ -67,15 +67,14 @@ class App extends Component {
   }
 
   handleSignUp = (username, password, name) => {
-    if (!this.findUser(username)){
-      createUser({username, password, name}).then(data => {
-        getCurrentUser(data.token).then(user => {
-          this.setState({
-            currentUser: user
-          }, () => {
-            localStorage.setItem("token", data.token)
-            this.props.history.push('/home')
-          })
+    createUser({username, password, name}).then(data => {
+      getCurrentUser(data.token).then(user => {
+        this.setState({
+          currentUser: user
+        }, () => {
+          localStorage.setItem("token", data.token)
+          this.getShelves()
+          this.props.history.push('/home')
         })
       })
     }
@@ -88,6 +87,7 @@ class App extends Component {
           currentUser: user
         }, () => {
           localStorage.setItem("token", data.token)
+          this.getShelves()
           this.props.history.push('/home')
         })
       })
