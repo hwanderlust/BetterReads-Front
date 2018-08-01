@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom'
-import { getBestSellers, searchRequest, createUser, createShelf, loginUser, getCurrentUser, getUserShelves, createBook } from './adapter'
+import { getBestSellers, searchRequest, createUser, createShelf, loginUser, getCurrentUser, getUserShelves, createBook, getAllUsers } from './adapter'
 
 import Menu from './components/Menu'
 import SignUp from './components/auth/SignUp'
@@ -58,17 +58,28 @@ class App extends Component {
     }
   }
 
+  findUser = (userName) => {
+    const allUsers = getAllUsers().then(users => console.log(users))
+    console.log(allUsers);
+
+    // allUsers.map((user) => {
+    //   user.username === userName
+    // })
+  }
+
   handleSignUp = (username, password, name) => {
-    createUser({username, password, name}).then(data => {
-      getCurrentUser(data.token).then(user => {
-        this.setState({
-          currentUser: user
-        }, () => {
-          localStorage.setItem("token", data.token)
-          this.props.history.push('/home')
+    if (!this.findUser(username)){
+      createUser({username, password, name}).then(data => {
+        getCurrentUser(data.token).then(user => {
+          this.setState({
+            currentUser: user
+          }, () => {
+            localStorage.setItem("token", data.token)
+            this.props.history.push('/home')
+          })
         })
       })
-    })
+    }
   }
 
   handleLogin = (username, password) => {
