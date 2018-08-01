@@ -7,6 +7,14 @@ class Shelves extends React.Component {
     addShelf: false,
   }
 
+  componentDidMount() {
+    // get shelves from this.props.shelves
+    const shelves = this.props.shelves.map(shelf => shelf.id)
+    // grab all shelves ids and use to do fetch for shelf's books
+
+    // render books for shelves
+  }
+
   showForm = () => {
     this.setState({addShelf: !this.state.addShelf})
   }
@@ -41,6 +49,7 @@ class Shelves extends React.Component {
   }
 
   render() {
+    console.log(this.props.shelves);
     return (
       <div className='shelves-container'>
         <div className='shelves-header'>
@@ -48,13 +57,7 @@ class Shelves extends React.Component {
           { this.state.addShelf ? this.renderForm() : <button onClick={this.showForm}>Add Shelf</button> }
         </div>
         <div className='shelves-section'>
-          <div className='shelf-info'>
-            <div className='shelf-cover'></div>
-            <div className='shelf-name'>
-              <h1 className='vertical-name'>Shelf Name</h1>
-            </div>
-          </div>
-          { this.props.shelves ? this.props.shelves.map(shelf => <ShelfDisplay />) : null }
+          { this.props.shelves ? this.props.shelves.map(shelf => <ShelfDisplay shelf={shelf} />) : `Awwwww no shelves :(`}
         </div>
       </div>
     )
