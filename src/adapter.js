@@ -74,3 +74,16 @@ export function getUserShelves(id, token){
 
   return fetch(url, options).then(r => r.json())
 }
+
+export function getShelfBooks(id, token) {
+  const url = ``
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Accepts: 'application/json',
+      Authorization: token
+    }
+  }
+  return fetch(url, options)
+}
