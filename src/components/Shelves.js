@@ -3,15 +3,11 @@ import { Redirect } from 'react-router-dom'
 import ShelfDisplay from './ShelfDisplay'
 
 class Shelves extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      addShelf: false,
-    }
+  state = {
+    addShelf: false,
   }
 
   showForm = () => {
-    console.log('test');
     this.setState({addShelf: !this.state.addShelf})
   }
 

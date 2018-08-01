@@ -1,17 +1,64 @@
 import React from 'react'
 
-const BookDetails = ({ book }) => {
-  console.log(book);
-  return (
-    book ?
-    <div>
-      <h1>{book.title}</h1>
-      <img src={book.image} />
-      <h3>{book.author}</h3>
-      <p>{book.description}</p>
-    </div>
-    : null
-  )
+class BookDetails extends React.Component {
+  state = {
+    addBook: false,
+    selectedShelf: null
+  }
+
+  componentDidMount(){
+    if (this.props.shelves){
+      this.initialShelf()
+    }
+  }
+
+  initialShelf = () => {
+    this.setState({
+      selectedShelf: this.props.shelves[0].id
+    })
+  }
+
+  handleClick = () => {
+    this.setState({addBook: !this.state.addBook})
+  }
+
+  addBookToShelf = () => {
+    // console.log(this.props.book)
+    this.props.createBook(this.props.book, this.state.selectedShelf)
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      selectedShelf: e.target.value
+    })
+  }
+
+  renderShelves = () => {
+    return (
+      <div>
+        <select onChange={(e) => this.handleChange(e)}>
+          {this.props.shelves.map((shelf) => <option value={shelf.id}>{shelf.name}</option>)}
+        </select>
+        <button onClick={this.addBookToShelf}>Add to Shelf</button>
+      </div>
+    )
+  }
+
+  render() {
+    console.log(this.props);
+    return (
+      this.props.book ?
+      <div>
+        <h1>{this.props.book.title}</h1>
+        { this.state.addBook ? this.renderShelves() : <button onClick={this.handleClick}>Add Book to a Shelf</button> }
+        <br/>
+        <img src={this.props.book.image} />
+        <h3>{this.props.book.author}</h3>
+        <p>{this.props.book.description}</p>
+      </div>
+      : null
+    )
+  }
 }
 
 export default BookDetails

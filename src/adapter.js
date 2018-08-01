@@ -74,3 +74,15 @@ export function getUserShelves(id, token){
 
   return fetch(url, options).then(r => r.json())
 }
+
+export function createBook(bookObj, shelfId){
+  debugger
+  const url = `http://localhost:3001/api/v1/books`
+  const options = {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({book: bookObj, shelf: shelfId})
+  }
+
+  return fetch(url, options).then(r => r.json()).then(book => console.log(book))
+}
