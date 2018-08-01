@@ -49,7 +49,7 @@ class BookDetails extends React.Component {
     return (
       this.props.book ?
       <div className='book-details-container'>
-        <div className='wrapper'>
+        <div className='wrapper wrapper-border wrapper-background'>
           <h1 className='white-font'>{this.props.book.title}</h1>
           { this.state.addBook ? this.renderShelves() : <button onClick={this.handleClick} className='form-inputs button-color'>Add Book to a Shelf</button> }
           <br/>
