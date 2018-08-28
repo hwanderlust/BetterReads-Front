@@ -1,5 +1,4 @@
 import React from 'react'
-import BookDetails from './BookDetails'
 
 const Book = ({ bookNo, book, renderBook }) => {
 
@@ -24,7 +23,7 @@ const Book = ({ bookNo, book, renderBook }) => {
       onMouseLeave={(e) => stopHover(e)}
       className='book'
     >
-      <img src={book.image} />
+      <img src={book.image} alt='book cover for certain book being displayed based on fetch from API' />
     </div>
   );
 }

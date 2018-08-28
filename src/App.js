@@ -145,6 +145,7 @@ class App extends Component {
   }
 
   render() {
+    // eslint-disable-next-line
     { this.handleMenuStyle() }
     return (
       <div className="App container">

@@ -6,6 +6,7 @@ export function getBestSellers() {
 }
 
 export function searchRequest(searchTerm) {
+  // eslint-disable-next-line
   searchTerm = searchTerm.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\s]/g,'+')
   let url = `${API_ROOT_URL}/search/${searchTerm}`
 

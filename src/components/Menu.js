@@ -5,7 +5,7 @@ class Menu extends React.Component {
 
   render() {
     const {
-      handleMenu, currentUser, logout, currentComponent
+      currentUser, currentComponent
     } = this.props
 
     const hover = (e) => {
@@ -25,26 +25,33 @@ class Menu extends React.Component {
 
     const activeComponentStyle = () => {
       switch(currentComponent) {
+        
         case '/home':
           if (document.getElementById('home')){
             document.getElementById('home').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-            break
           }
+          break
+
         case '/shelves':
           if (document.getElementById('shelves')){
             document.getElementById('shelves').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-            break
           }
+          break
+
         case '/signup':
           if (document.getElementById('signup')){
             document.getElementById('signup').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-            break
           }
+          break
+
         case '/login':
           if (document.getElementById('login')){
             document.getElementById('login').style = `background-color: rgba(135, 75, 175, 1); color: rgba(250, 250, 250, 1);`
-            break
           }
+          break
+
+        default:
+          return console.log('something is wrong...');
       }
     }
 

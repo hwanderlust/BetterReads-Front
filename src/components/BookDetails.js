@@ -53,7 +53,7 @@ class BookDetails extends React.Component {
           <h1 className='white-font'>{this.props.book.title}</h1>
           { this.state.addBook ? this.renderShelves() : <button onClick={this.handleClick} className='form-inputs button-color'>Add Book to a Shelf</button> }
           <br/>
-          <img className='' src={this.props.book.image} />
+          <img className='' src={this.props.book.image} alt='specific book cover along with book info' />
           <h3 className='white-font'>{this.props.book.author}</h3>
           <p className='white-font'>{this.props.book.description}</p>
         </div>

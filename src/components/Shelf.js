@@ -16,7 +16,7 @@ const Shelf = ({shelf, renderBook}) => {
         { shelf[1].map(book => <div className='spine'>{book.title}</div>) }
       </aside>
       <section className='books-list'>
-        { shelf[1].map(book => <div onClick={() => showBook(book)}><img className='book' src={book.image} /></div> ) }
+        { shelf[1].map(book => <div onClick={() => showBook(book)}><img className='book' src={book.image} alt='book cover based on fetch from API' /></div> ) }
       </section>
     </div>
   )
